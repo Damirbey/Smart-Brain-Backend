@@ -17,9 +17,7 @@ app.use(cors());
 const cn = 'postgres://postgres:123@localhost:5432/smart_brain';
 const db = pgp(cn);
 
-app.get("/",(req,res)=>{
-    res.send("Working")
-})
+app.get("/",(req,res)=>{res.send("Working");})
 
 /**************************************************/
 /*********************Signin*************************/
