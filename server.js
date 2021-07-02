@@ -16,13 +16,16 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //const cn = 'postgres://postgres123:@postgresql-cubic-33584:5432/smart_brain';
-const cn = new Client({
+/*const cn = new Client({
     connectionString: process.env.DATABAS_URL,
     ssl: {
       rejectUnauthorized: false
     }
-  });
-const db = pgp(cn);
+  });*/
+const db = pgp({connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }});
 
 app.get("/",(req,res)=>{res.send("Working");})
 
