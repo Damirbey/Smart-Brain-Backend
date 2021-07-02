@@ -17,7 +17,7 @@ app.use(cors());
 
 //const cn = 'postgres://postgres123:@postgresql-cubic-33584:5432/smart_brain';
 const cn = new Client({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: process.env.DATABAS_URL,
     ssl: {
       rejectUnauthorized: false
     }
