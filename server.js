@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const pgp = require('pg-promise')({});
+const { Client } = require('pg');
 const cors = require("cors");
 const PORT = process.env.PORT || 3000;
 const register = require('./controllers/register');
@@ -14,7 +15,13 @@ const deleteOperation= require('./controllers/delete');
 app.use(bodyParser.json());
 app.use(cors());
 
-const cn = 'postgres://postgres:@postgresql-cubic-33584:5432/smart_brain';
+//const cn = 'postgres://postgres123:@postgresql-cubic-33584:5432/smart_brain';
+const cn = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  });
 const db = pgp(cn);
 
 app.get("/",(req,res)=>{res.send("Working");})
