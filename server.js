@@ -14,7 +14,7 @@ const deleteOperation= require('./controllers/delete');
 app.use(bodyParser.json());
 app.use(cors());
 
-const cn = 'postgres://postgres:123@localhost:5432/smart_brain';
+const cn = 'postgres://postgres:@postgresql-cubic-33584:5432/smart_brain';
 const db = pgp(cn);
 
 app.get("/",(req,res)=>{res.send("Working");})
