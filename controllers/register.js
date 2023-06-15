@@ -1,7 +1,6 @@
 const saltRounds = 10;
 
 const registerNewUser = (db,bcrypt)=>(req,res)=>{
-
     const {name,surname,email,password} = req.body;
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
     db.any("SELECT * FROM users WHERE email = $1",[email])
