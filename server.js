@@ -16,20 +16,14 @@ const deleteOperation= require('./controllers/delete');
 app.use(bodyParser.json());
 app.use(cors());
 dotenv.config();
-//const cn = 'postgres://postgres123:@postgresql-cubic-33584:5432/smart_brain';
-/*const cn = new Client({
-    connectionString: process.env.DATABAS_URL,
-    ssl: {
-      rejectUnauthorized: false
-    }
-  });*/
-  process.env.DATABASE_URL;
-const db = pgp({connectionString:'postgresql://postgres:123@localhost:5432/smart_brain?sslmode=disable',
+
+const db = pgp({connectionString:process.env.DATABASE_URL,
     ssl: {
       rejectUnauthorized: false
     }});
 
 app.get("/",(req,res)=>{res.send("Working");
+
 db.any("SELECT * FROM users").then((result)=>{console.log("result is ", result)}).catch(err=>console.log(err))
 
 })
