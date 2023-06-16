@@ -1,7 +1,9 @@
 const Clarifai = require('clarifai');
+const dotenv =require('dotenv');
+dotenv.config();
 
 const app = new Clarifai.App({
-    apiKey: '7d0b3c60878247aca2be076cee85a2c1'
+    apiKey: process.env.CLARIFAI_API_KEY
    });
 
 const uploadImage = (db)=>(req,res)=>{
@@ -16,7 +18,7 @@ const uploadImage = (db)=>(req,res)=>{
 
 const handleClarifaiRequest = (req,res)=>{
     const {image} = req.body;
-    app.models.predict(Clarifai.FACE_DETECT_MODEL,image)
+    app.models.predict('face-detection',image)
    .then(data=>res.json(data));
 }
 module.exports={
