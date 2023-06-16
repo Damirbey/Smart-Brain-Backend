@@ -30,11 +30,7 @@ const db = pgp({connectionString:process.env.DATABASE_URL,
       rejectUnauthorized: false
     }});
 
-app.get("/",(req,res)=>{res.send("Working");
-
-db.any("SELECT * FROM users").then((result)=>{console.log("result is ", result)}).catch(err=>console.log(err))
-
-})
+app.get("/",(req,res)=>res.send("Working"))
 
 /**************************************************/
 /*********************Signin*************************/
